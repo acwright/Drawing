@@ -82,30 +82,7 @@ class CanvasView: UIView, LayerDelegate {
     func layerDidUpdate(layer: Layer) {
         self.setNeedsDisplay()
     }
-    
-//    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-//        let touch = touches.anyObject() as UITouch
-//        let location = touch.locationInView(self)
-//        
-//        self.controlView.selected = false
-//        
-//        if self.selectMode {
-//            if let view = self.hitTest(location, withEvent: event) {
-//                if view != self {
-//                    if view.isKindOfClass(ShapeView) {
-//                        let shapeView = view as ShapeView
-//                        
-//                        self.controlView.controlledView = shapeView
-//                        self.controlView.selected = true
-//                    }
-//                    if view.isKindOfClass(ControlView) {
-//                        self.controlView.selected = true
-//                    }
-//                }
-//            }
-//        }
-//    }
-//    
+
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         let touch = touches.anyObject() as UITouch
         let location = touch.locationInView(self)
@@ -115,22 +92,8 @@ class CanvasView: UIView, LayerDelegate {
         let y = previousLocation.y - location.y
         
         for layer in self.layers {
-            layer.drag(self.corner, offsetX: x, offsetY: y)
+            layer.drag(self.corner, deltaX: x, deltaY: y)
         }
     }
-//
-//    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-//        if self.drawMode {
-//            self.drawMode = false
-//            self.selectMode = true
-//            
-//            if let activeView = self.activeView {
-//                self.controlView.selected = true
-//                self.controlView.controlledView = activeView
-//                
-//                self.activeView = nil
-//            }
-//        }
-//    }
 
 }

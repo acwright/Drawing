@@ -79,45 +79,48 @@ class Layer: NSObject {
         // Do nothing
     }
     
-    func drag(corner: Corner, offsetX: CGFloat, offsetY: CGFloat) {
+    func drag(corner: Corner, deltaX: CGFloat, deltaY: CGFloat) {
         switch corner {
         case .TopLeft:
-            self.x -= offsetX
-            self.y -= offsetY
-            self.width += offsetX
-            self.height += offsetY
+            self.x -= deltaX // Fix
+            self.y -= cos(abs(self.rotation * CGFloat(M_PI) / 180.0)) * deltaY
+            self.width += deltaX
+            self.height += deltaY
             break
         case .TopMiddle:
-            self.y -= offsetY
-            self.height += offsetY
+            self.x -= sin(abs(self.rotation * CGFloat(M_PI) / 180.0)) * deltaY
+            self.y -= cos(abs(self.rotation * CGFloat(M_PI) / 180.0)) * deltaY
+            self.height += deltaY
             break
         case .TopRight:
-            self.y -= offsetY
-            self.height += offsetY
-            self.width -= offsetX
+            self.x -= sin(abs(self.rotation * CGFloat(M_PI) / 180.0)) * deltaY
+            self.y -= cos(abs(self.rotation * CGFloat(M_PI) / 180.0)) * deltaY
+            self.height += deltaY
+            self.width -= deltaX
             break
         case .MiddleLeft:
-            self.x -= offsetX
-            self.width += offsetX
+            self.y += sin(abs(self.rotation * CGFloat(M_PI) / 180.0)) * deltaX
+            self.x -= cos(abs(self.rotation * CGFloat(M_PI) / 180.0)) * deltaX
+            self.width += deltaX
             break
         case .MiddleRight:
-            self.width -= offsetX
+            self.width -= deltaX
             break
         case .BottomLeft:
-            self.x -= offsetX
-            self.width += offsetX
-            self.height -= offsetY
+            self.x -= deltaX // Fix
+            self.width += deltaX
+            self.height -= deltaY
             break
         case .BottomMiddle:
-            self.height -= offsetY
+            self.height -= deltaY
             break
         case .BottomRight:
-            self.width -= offsetX
-            self.height -= offsetY
+            self.width -= deltaX
+            self.height -= deltaY
             break
         case .Middle:
-            self.x -= offsetX
-            self.y -= offsetY
+            self.x -= deltaX
+            self.y -= deltaY
             break
         case .None:
             fallthrough
