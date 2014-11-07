@@ -8,12 +8,16 @@
 
 import UIKit
 
-class CanvasView: UIView {
+class CanvasView: UIView, LayerDelegate {
     
-    var controlView: ControlView!
-    var activeView: ShapeView?
-    var selectMode: Bool = false
-    var drawMode: Bool = true
+    var corner: Layer.Corner = Layer.Corner.BottomRight
+    
+    var layers: [Layer] = []
+    var debug: Bool = false {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,71 +32,105 @@ class CanvasView: UIView {
     }
     
     func setup() {
-        self.controlView = ControlView(frame: CGRectZero)
-        self.addSubview(self.controlView)
         
-        self.backgroundColor = UIColor.lightGrayColor()
+        self.backgroundColor = UIColor.whiteColor()
     }
     
-    func rotate() {
-        self.controlView.rotate(10.0)
+    func addLayer(layer: Layer) {
+        layer.delegate = self
+        self.layers.append(layer)
+        self.setNeedsDisplay()
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        let touch = touches.anyObject() as UITouch
-        let location = touch.locationInView(self)
+    func boundingRectForLayer(layer: Layer) -> CGRect {
+        var translate = CGAffineTransformMakeTranslation(layer.x, layer.y)
+        translate = CGAffineTransformConcat(CGAffineTransformMakeRotation(layer.rotation * CGFloat(M_PI) / 180.0), translate) // New transform must come first!
+        translate = CGAffineTransformConcat(CGAffineTransformMakeScale(layer.scaleX, layer.scaleY), translate) // New transform must come first!
         
-        self.controlView.selected = false
+        return CGRectApplyAffineTransform(CGRectMake(layer.offsetX, layer.offsetY, layer.width, layer.height), translate)
+    }
+    
+    func drawLayerDebugInContext(layer: Layer, context: CGContextRef) {
+        CGContextSaveGState(context)
         
-        if self.selectMode {
-            if let view = self.hitTest(location, withEvent: event) {
-                if view != self {
-                    if view.isKindOfClass(ShapeView) {
-                        let shapeView = view as ShapeView
-                        
-                        self.controlView.controlledView = shapeView
-                        self.controlView.selected = true
-                    }
-                    if view.isKindOfClass(ControlView) {
-                        self.controlView.selected = true
-                    }
-                }
+        let path = UIBezierPath(rect: self.boundingRectForLayer(layer))
+        
+        UIColor.redColor().setStroke()
+        path.stroke()
+        
+        var ovalPath = UIBezierPath(ovalInRect: CGRectMake(layer.x - 5.0, layer.y - 5.0, 10.0, 10.0))
+        UIColor.blueColor().setFill()
+        ovalPath.fill()
+        
+        CGContextRestoreGState(context)
+    }
+    
+    override func drawRect(rect: CGRect) {
+        let context = UIGraphicsGetCurrentContext()
+        
+        for layer in layers {
+            layer.drawInContext(context)
+            
+            if self.debug {
+                self.drawLayerDebugInContext(layer, context: context)
             }
         }
     }
     
+    // MARK: LayerDelegate
+    
+    func layerDidUpdate(layer: Layer) {
+        self.setNeedsDisplay()
+    }
+    
+//    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+//        let touch = touches.anyObject() as UITouch
+//        let location = touch.locationInView(self)
+//        
+//        self.controlView.selected = false
+//        
+//        if self.selectMode {
+//            if let view = self.hitTest(location, withEvent: event) {
+//                if view != self {
+//                    if view.isKindOfClass(ShapeView) {
+//                        let shapeView = view as ShapeView
+//                        
+//                        self.controlView.controlledView = shapeView
+//                        self.controlView.selected = true
+//                    }
+//                    if view.isKindOfClass(ControlView) {
+//                        self.controlView.selected = true
+//                    }
+//                }
+//            }
+//        }
+//    }
+//    
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         let touch = touches.anyObject() as UITouch
         let location = touch.locationInView(self)
+        let previousLocation = touch.previousLocationInView(self)
         
-        if self.drawMode {
-            if let shape = self.activeView {
-                let width: CGFloat = location.x - shape.frame.origin.x
-                let height: CGFloat = location.y - shape.frame.origin.y
-                
-                shape.frame = CGRectMake(shape.frame.origin.x, shape.frame.origin.y, width, height)
-                shape.setNeedsDisplay()
-            } else {
-                let shape = ShapeView(frame: CGRectMake(location.x, location.y, 0.0, 0.0))
-                self.insertSubview(shape, belowSubview: self.controlView!)
-                
-                self.activeView = shape
-            }
+        let x = previousLocation.x - location.x
+        let y = previousLocation.y - location.y
+        
+        for layer in self.layers {
+            layer.drag(self.corner, offsetX: x, offsetY: y)
         }
     }
-    
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        if self.drawMode {
-            self.drawMode = false
-            self.selectMode = true
-            
-            if let activeView = self.activeView {
-                self.controlView.selected = true
-                self.controlView.controlledView = activeView
-                
-                self.activeView = nil
-            }
-        }
-    }
+//
+//    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+//        if self.drawMode {
+//            self.drawMode = false
+//            self.selectMode = true
+//            
+//            if let activeView = self.activeView {
+//                self.controlView.selected = true
+//                self.controlView.controlledView = activeView
+//                
+//                self.activeView = nil
+//            }
+//        }
+//    }
 
 }
