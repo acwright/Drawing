@@ -53,14 +53,15 @@ class CanvasView: UIView, LayerDelegate {
     func drawLayerDebugInContext(layer: Layer, context: CGContextRef) {
         CGContextSaveGState(context)
         
-        let path = UIBezierPath(rect: self.boundingRectForLayer(layer))
+        let boundingPath = UIBezierPath(rect: self.boundingRectForLayer(layer))
         
         UIColor.redColor().setStroke()
-        path.stroke()
+        boundingPath.stroke()
         
-        var ovalPath = UIBezierPath(ovalInRect: CGRectMake(layer.x - 5.0, layer.y - 5.0, 10.0, 10.0))
+        var originPath = UIBezierPath(ovalInRect: CGRectMake(layer.x - 5.0, layer.y - 5.0, 10.0, 10.0))
+        
         UIColor.blueColor().setFill()
-        ovalPath.fill()
+        originPath.fill()
         
         CGContextRestoreGState(context)
     }
@@ -88,11 +89,11 @@ class CanvasView: UIView, LayerDelegate {
         let location = touch.locationInView(self)
         let previousLocation = touch.previousLocationInView(self)
         
-        let x = previousLocation.x - location.x
-        let y = previousLocation.y - location.y
+        let deltaX = previousLocation.x - location.x
+        let deltaY = previousLocation.y - location.y
         
         for layer in self.layers {
-            layer.drag(self.corner, deltaX: x, deltaY: y)
+            layer.drag(self.corner, deltaX: deltaX, deltaY: deltaY)
         }
     }
 

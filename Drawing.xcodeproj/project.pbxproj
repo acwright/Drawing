@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4528A1B11A74BDEF0053FB72 /* 2.0.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4528A1B01A74BDEF0053FB72 /* 2.0.storyboard */; };
+		4528A1B31A74BE3A0053FB72 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528A1B21A74BE3A0053FB72 /* CanvasViewController.swift */; };
+		4528A1B51A74BE620053FB72 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528A1B41A74BE620053FB72 /* CanvasView.swift */; };
+		4528A1B71A74BE770053FB72 /* RectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528A1B61A74BE770053FB72 /* RectangleView.swift */; };
+		4528A1B91A74BEF50053FB72 /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4528A1B81A74BEF50053FB72 /* LayerView.swift */; };
 		45BD5B481A01B35300C65EE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BD5B471A01B35300C65EE8 /* AppDelegate.swift */; };
-		45BD5B4A1A01B35300C65EE8 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BD5B491A01B35300C65EE8 /* CanvasViewController.swift */; };
-		45BD5B4D1A01B35300C65EE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45BD5B4B1A01B35300C65EE8 /* Main.storyboard */; };
+		45BD5B4D1A01B35300C65EE8 /* 1.0.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45BD5B4B1A01B35300C65EE8 /* 1.0.storyboard */; };
 		45BD5B4F1A01B35300C65EE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45BD5B4E1A01B35300C65EE8 /* Images.xcassets */; };
 		45BD5B521A01B35300C65EE8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BD5B501A01B35300C65EE8 /* LaunchScreen.xib */; };
 		45BD5B5E1A01B35300C65EE8 /* DrawingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BD5B5D1A01B35300C65EE8 /* DrawingTests.swift */; };
-		45BD5B6A1A01B47C00C65EE8 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BD5B691A01B47C00C65EE8 /* CanvasView.swift */; };
 		45E906D71A0C257A00EBF0DE /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E906D61A0C257A00EBF0DE /* Layer.swift */; };
 		45E906D91A0C267C00EBF0DE /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E906D81A0C267C00EBF0DE /* Rectangle.swift */; };
 /* End PBXBuildFile section */
@@ -29,20 +32,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4528A1B01A74BDEF0053FB72 /* 2.0.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = 2.0.storyboard; path = 2.0/2.0.storyboard; sourceTree = "<group>"; };
+		4528A1B21A74BE3A0053FB72 /* CanvasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CanvasViewController.swift; path = 2.0/CanvasViewController.swift; sourceTree = "<group>"; };
+		4528A1B41A74BE620053FB72 /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CanvasView.swift; path = 2.0/CanvasView.swift; sourceTree = "<group>"; };
+		4528A1B61A74BE770053FB72 /* RectangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RectangleView.swift; path = 2.0/RectangleView.swift; sourceTree = "<group>"; };
+		4528A1B81A74BEF50053FB72 /* LayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayerView.swift; path = 2.0/LayerView.swift; sourceTree = "<group>"; };
 		45BD5B421A01B35300C65EE8 /* Drawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45BD5B461A01B35300C65EE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45BD5B471A01B35300C65EE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		45BD5B491A01B35300C65EE8 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
-		45BD5B4C1A01B35300C65EE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		45BD5B491A01B35300C65EE8 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CanvasViewController.swift; path = 1.0/CanvasViewController.swift; sourceTree = "<group>"; };
+		45BD5B4C1A01B35300C65EE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/1.0.storyboard; sourceTree = "<group>"; };
 		45BD5B4E1A01B35300C65EE8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		45BD5B511A01B35300C65EE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		45BD5B571A01B35300C65EE8 /* DrawingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrawingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		45BD5B5C1A01B35300C65EE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45BD5B5D1A01B35300C65EE8 /* DrawingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingTests.swift; sourceTree = "<group>"; };
-		45BD5B671A01B37000C65EE8 /* ControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
-		45BD5B691A01B47C00C65EE8 /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
-		45E906D61A0C257A00EBF0DE /* Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
-		45E906D81A0C267C00EBF0DE /* Rectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
+		45BD5B671A01B37000C65EE8 /* ControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ControlView.swift; path = 1.0/ControlView.swift; sourceTree = "<group>"; };
+		45BD5B691A01B47C00C65EE8 /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CanvasView.swift; path = 1.0/CanvasView.swift; sourceTree = "<group>"; };
+		45E906D61A0C257A00EBF0DE /* Layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Layer.swift; path = 1.0/Layer.swift; sourceTree = "<group>"; };
+		45E906D81A0C267C00EBF0DE /* Rectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Rectangle.swift; path = 1.0/Rectangle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4528A1AE1A74BD0B0053FB72 /* 1.0 */ = {
+			isa = PBXGroup;
+			children = (
+				45BD5B491A01B35300C65EE8 /* CanvasViewController.swift */,
+				45BD5B691A01B47C00C65EE8 /* CanvasView.swift */,
+				45BD5B671A01B37000C65EE8 /* ControlView.swift */,
+				45E906D61A0C257A00EBF0DE /* Layer.swift */,
+				45E906D81A0C267C00EBF0DE /* Rectangle.swift */,
+				45BD5B4B1A01B35300C65EE8 /* 1.0.storyboard */,
+			);
+			name = 1.0;
+			sourceTree = "<group>";
+		};
+		4528A1AF1A74BD360053FB72 /* 2.0 */ = {
+			isa = PBXGroup;
+			children = (
+				4528A1B01A74BDEF0053FB72 /* 2.0.storyboard */,
+				4528A1B21A74BE3A0053FB72 /* CanvasViewController.swift */,
+				4528A1B41A74BE620053FB72 /* CanvasView.swift */,
+				4528A1B61A74BE770053FB72 /* RectangleView.swift */,
+				4528A1B81A74BEF50053FB72 /* LayerView.swift */,
+			);
+			name = 2.0;
+			sourceTree = "<group>";
+		};
 		45BD5B391A01B35300C65EE8 = {
 			isa = PBXGroup;
 			children = (
@@ -85,14 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				45BD5B471A01B35300C65EE8 /* AppDelegate.swift */,
-				45BD5B491A01B35300C65EE8 /* CanvasViewController.swift */,
-				45BD5B691A01B47C00C65EE8 /* CanvasView.swift */,
-				45BD5B671A01B37000C65EE8 /* ControlView.swift */,
-				45E906D61A0C257A00EBF0DE /* Layer.swift */,
-				45E906D81A0C267C00EBF0DE /* Rectangle.swift */,
-				45BD5B4B1A01B35300C65EE8 /* Main.storyboard */,
-				45BD5B4E1A01B35300C65EE8 /* Images.xcassets */,
-				45BD5B501A01B35300C65EE8 /* LaunchScreen.xib */,
+				4528A1AE1A74BD0B0053FB72 /* 1.0 */,
+				4528A1AF1A74BD360053FB72 /* 2.0 */,
 				45BD5B451A01B35300C65EE8 /* Supporting Files */,
 			);
 			path = Drawing;
@@ -101,6 +128,8 @@
 		45BD5B451A01B35300C65EE8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				45BD5B501A01B35300C65EE8 /* LaunchScreen.xib */,
+				45BD5B4E1A01B35300C65EE8 /* Images.xcassets */,
 				45BD5B461A01B35300C65EE8 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -203,9 +232,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45BD5B4D1A01B35300C65EE8 /* Main.storyboard in Resources */,
+				45BD5B4D1A01B35300C65EE8 /* 1.0.storyboard in Resources */,
 				45BD5B521A01B35300C65EE8 /* LaunchScreen.xib in Resources */,
 				45BD5B4F1A01B35300C65EE8 /* Images.xcassets in Resources */,
+				4528A1B11A74BDEF0053FB72 /* 2.0.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,9 +254,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				45E906D91A0C267C00EBF0DE /* Rectangle.swift in Sources */,
-				45BD5B4A1A01B35300C65EE8 /* CanvasViewController.swift in Sources */,
+				4528A1B51A74BE620053FB72 /* CanvasView.swift in Sources */,
+				4528A1B91A74BEF50053FB72 /* LayerView.swift in Sources */,
 				45BD5B481A01B35300C65EE8 /* AppDelegate.swift in Sources */,
-				45BD5B6A1A01B47C00C65EE8 /* CanvasView.swift in Sources */,
+				4528A1B31A74BE3A0053FB72 /* CanvasViewController.swift in Sources */,
+				4528A1B71A74BE770053FB72 /* RectangleView.swift in Sources */,
 				45E906D71A0C257A00EBF0DE /* Layer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,12 +282,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		45BD5B4B1A01B35300C65EE8 /* Main.storyboard */ = {
+		45BD5B4B1A01B35300C65EE8 /* 1.0.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				45BD5B4C1A01B35300C65EE8 /* Base */,
 			);
-			name = Main.storyboard;
+			name = 1.0.storyboard;
 			sourceTree = "<group>";
 		};
 		45BD5B501A01B35300C65EE8 /* LaunchScreen.xib */ = {
