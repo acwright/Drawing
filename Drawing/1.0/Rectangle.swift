@@ -10,21 +10,21 @@ import UIKit
 
 class Rectangle: Layer {
    
-    var backgroundColor: UIColor = UIColor.clearColor()
-    var strokeColor: UIColor = UIColor.clearColor()
+    var backgroundColor: UIColor = UIColor.clear
+    var strokeColor: UIColor = UIColor.clear
     var strokeWidth: CGFloat = 0.0
     var cornerRadius: CGFloat = 0.0
  
-    override func drawInContext(context: CGContextRef) {
-        super.drawInContext(context)
+    override func drawInContext(context: CGContext) {
+        super.drawInContext(context: context)
         
-        CGContextSaveGState(context)
-        CGContextTranslateCTM(context, self.x, self.y)
-        CGContextRotateCTM(context, self.rotation * CGFloat(M_PI) / 180.0)
-        CGContextScaleCTM(context, self.scaleX, self.scaleY)
+        context.saveGState()
+        context.translateBy(x: self.x, y: self.y)
+        context.rotate(by: self.rotation * CGFloat.pi / 180.0)
+        context.scaleBy(x: self.scaleX, y: self.scaleY)
         
         //let path = UIBezierPath(roundedRect: CGRectMake(self.offsetX, self.offsetY, self.width, self.height), cornerRadius: self.cornerRadius)
-        let path = UIBezierPath(rect: CGRectMake(self.offsetX, self.offsetY, self.width, self.height))
+        let path = UIBezierPath(rect: CGRect(x: self.offsetX, y: self.offsetY, width: self.width, height: self.height))
         
         self.backgroundColor.setFill()
         self.strokeColor.setStroke()
@@ -34,6 +34,6 @@ class Rectangle: Layer {
         path.fill()
         path.stroke()
         
-        CGContextRestoreGState(context)
+        context.restoreGState()
     }
 }

@@ -16,13 +16,13 @@ class LayerView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    var debugColor: UIColor = UIColor.clearColor() {
+    var debugColor: UIColor = UIColor.clear {
         didSet {
             self.setNeedsDisplay()
         }
     }
     
-    var canvas: CGRect = CGRectZero {
+    var canvas: CGRect = CGRect.zero {
         didSet {
             self.setNeedsDisplay()
         }
@@ -31,21 +31,21 @@ class LayerView: UIView, UIGestureRecognizerDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: "tap:")
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tap(recognizer:)))
         tapRecognizer.delegate = self
         tapRecognizer.numberOfTapsRequired = 1
         
-        let panRecognizer = UIPanGestureRecognizer(target: self, action: "pan:")
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(pan(recognizer:)))
         panRecognizer.delegate = self
         panRecognizer.minimumNumberOfTouches = 1
         panRecognizer.maximumNumberOfTouches = 1
         
-        let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: "pinch:")
+        let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch(recognizer:)))
         pinchRecognizer.delegate = self
         
-        let rotationRecognizer = UIRotationGestureRecognizer(target: self, action: "rotate:")
+        let rotationRecognizer = UIRotationGestureRecognizer(target: self, action: #selector(rotate(recognizer:)))
         rotationRecognizer.delegate = self
         
         self.addGestureRecognizer(tapRecognizer)
@@ -53,23 +53,23 @@ class LayerView: UIView, UIGestureRecognizerDelegate {
         self.addGestureRecognizer(pinchRecognizer)
         self.addGestureRecognizer(rotationRecognizer)
         
-        self.canvas = CGRectOffset(self.bounds, 10, 10)
-        self.frame = CGRectMake(self.frame.origin.x - 10, self.frame.origin.y - 10, self.frame.size.width + 20, self.frame.size.height + 20)
+        self.canvas = self.bounds.offsetBy(dx: 10, dy: 10)
+        self.frame = CGRect(x: self.frame.origin.x - 10, y: self.frame.origin.y - 10, width: self.frame.size.width + 20, height: self.frame.size.height + 20)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    func tap(recognizer: UITapGestureRecognizer) {
+    @objc func tap(recognizer: UITapGestureRecognizer) {
         if let view = recognizer.view as? LayerView {
             view.selected = !view.selected
         }
     }
     
-    func pan(recognizer: UIPanGestureRecognizer) {
+    @objc func pan(recognizer: UIPanGestureRecognizer) {
         if let superview = self.superview {
-            let translation = recognizer.translationInView(superview)
+            let translation = recognizer.translation(in: superview)
             
             if let view = recognizer.view as? LayerView {
                 if view.selected {
@@ -77,32 +77,32 @@ class LayerView: UIView, UIGestureRecognizerDelegate {
                 }
             }
             
-            recognizer.setTranslation(CGPointZero, inView: superview)
+            recognizer.setTranslation(CGPoint.zero, in: superview)
         }
     }
     
-    func pinch(recognizer: UIPinchGestureRecognizer) {
+    @objc func pinch(recognizer: UIPinchGestureRecognizer) {
         if let view = recognizer.view as? LayerView {
             if view.selected {
-                view.transform = CGAffineTransformScale(view.transform, recognizer.scale, recognizer.scale)
+                view.transform = view.transform.scaledBy(x: recognizer.scale, y: recognizer.scale)
             }
         }
         recognizer.scale = 1.0
     }
     
-    func rotate(recognizer: UIRotationGestureRecognizer) {
+    @objc func rotate(recognizer: UIRotationGestureRecognizer) {
         if let view = recognizer.view as? LayerView {
             if view.selected {
-                view.transform = CGAffineTransformRotate(view.transform, recognizer.rotation)
+                view.transform = view.transform.rotated(by: recognizer.rotation)
             }
         }
         recognizer.rotation = 0
     }
     
-    override func drawRect(rect: CGRect) {
-        let context = UIGraphicsGetCurrentContext()
+    override func draw(_ rect: CGRect) {
+        let context = UIGraphicsGetCurrentContext()!
         
-        CGContextSaveGState(context)
+        context.saveGState()
         
         if self.selected {
             let path = UIBezierPath(rect: self.bounds)
@@ -110,10 +110,10 @@ class LayerView: UIView, UIGestureRecognizerDelegate {
             path.fill()
         }
         
-        CGContextRestoreGState(context)
+        context.restoreGState()
     }
     
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
 

@@ -10,13 +10,13 @@ import UIKit
 
 class RectangleView: LayerView {
 
-    var fillColor: UIColor = UIColor.clearColor() {
+    var fillColor: UIColor = UIColor.clear {
         didSet {
             self.setNeedsDisplay()
         }
     }
     
-    var strokeColor: UIColor = UIColor.clearColor() {
+    var strokeColor: UIColor = UIColor.clear {
         didSet {
             self.setNeedsDisplay()
         }
@@ -34,12 +34,12 @@ class RectangleView: LayerView {
         }
     }
     
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
-        let context = UIGraphicsGetCurrentContext()
+        let context = UIGraphicsGetCurrentContext()!
         
-        CGContextSaveGState(context)
+        context.saveGState()
         
         var path: UIBezierPath
         
@@ -57,7 +57,7 @@ class RectangleView: LayerView {
         path.fill()
         path.stroke()
         
-        CGContextRestoreGState(context)
+        context.saveGState()
     }
 
 }

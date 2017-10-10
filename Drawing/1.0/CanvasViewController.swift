@@ -15,7 +15,7 @@ class CanvasViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let canvasView = self.view as CanvasView
+        let canvasView = self.view as! CanvasView
         
         let layer = Rectangle()
         layer.x = 50.0
@@ -28,132 +28,132 @@ class CanvasViewController: UIViewController {
         layer.width = 20.0
         layer.height = 20.0
         layer.strokeWidth = 0.0
-        layer.strokeColor = UIColor.blackColor()
-        layer.backgroundColor = UIColor.greenColor()
+        layer.strokeColor = UIColor.black
+        layer.backgroundColor = UIColor.green
         
-        canvasView.addLayer(layer)
+        canvasView.addLayer(layer: layer)
     }
     
-    @IBAction func debug(sender: AnyObject) {
-        let canvasView = self.view as CanvasView
+    @IBAction func debug(_ sender: AnyObject) {
+        let canvasView = self.view as! CanvasView
         
         canvasView.debug = !canvasView.debug
     }
     
-    @IBAction func X(sender: AnyObject) {
-        let canvasView = self.view as CanvasView
+    @IBAction func X(_ sender: AnyObject) {
+        let canvasView = self.view as! CanvasView
         
         for layer in canvasView.layers {
             layer.x += 10.0 * multiplier
         }
     }
     
-    @IBAction func offX(sender: AnyObject) {
-        let canvasView = self.view as CanvasView
+    @IBAction func offX(_ sender: AnyObject) {
+        let canvasView = self.view as! CanvasView
         
         for layer in canvasView.layers {
             layer.offsetX += 10.0 * multiplier
         }
     }
     
-    @IBAction func Y(sender: AnyObject) {
-        let canvasView = self.view as CanvasView
+    @IBAction func Y(_ sender: AnyObject) {
+        let canvasView = self.view as! CanvasView
         
         for layer in canvasView.layers {
             layer.y += 10.0 * multiplier
         }
     }
     
-    @IBAction func offY(sender: AnyObject) {
-        let canvasView = self.view as CanvasView
+    @IBAction func offY(_ sender: AnyObject) {
+        let canvasView = self.view as! CanvasView
         
         for layer in canvasView.layers {
             layer.offsetY += 10.0 * multiplier
         }
     }
     
-    @IBAction func W(sender: AnyObject) {
-        let canvasView = self.view as CanvasView
+    @IBAction func W(_ sender: AnyObject) {
+        let canvasView = self.view as! CanvasView
         
         for layer in canvasView.layers {
             layer.width += 10.0 * multiplier
         }
     }
     
-    @IBAction func H(sender: AnyObject) {
-        let canvasView = self.view as CanvasView
+    @IBAction func H(_ sender: AnyObject) {
+        let canvasView = self.view as! CanvasView
         
         for layer in canvasView.layers {
             layer.height += 10.0 * multiplier
         }
     }
     
-    @IBAction func tl(sender: AnyObject) {
-        let canvasView = self.view as CanvasView
+    @IBAction func tl(_ sender: AnyObject) {
+        let canvasView = self.view as! CanvasView
         
         canvasView.corner = Layer.Corner.TopLeft
     }
     
-    @IBAction func tm(sender: AnyObject) {
-        let canvasView = self.view as CanvasView
+    @IBAction func tm(_ sender: AnyObject) {
+        let canvasView = self.view as! CanvasView
         
         canvasView.corner = Layer.Corner.TopMiddle
     }
     
-    @IBAction func tr(sender: AnyObject) {
-        let canvasView = self.view as CanvasView
+    @IBAction func tr(_ sender: AnyObject) {
+        let canvasView = self.view as! CanvasView
         
         canvasView.corner = Layer.Corner.TopRight
     }
     
-    @IBAction func ml(sender: AnyObject) {
-        let canvasView = self.view as CanvasView
+    @IBAction func ml(_ sender: AnyObject) {
+        let canvasView = self.view as! CanvasView
         
         canvasView.corner = Layer.Corner.MiddleLeft
     }
     
-    @IBAction func mr(sender: AnyObject) {
-        let canvasView = self.view as CanvasView
+    @IBAction func mr(_ sender: AnyObject) {
+        let canvasView = self.view as! CanvasView
         
         canvasView.corner = Layer.Corner.MiddleRight
     }
     
-    @IBAction func bl(sender: AnyObject) {
-        let canvasView = self.view as CanvasView
+    @IBAction func bl(_ sender: AnyObject) {
+        let canvasView = self.view as! CanvasView
         
         canvasView.corner = Layer.Corner.BottomLeft
     }
     
-    @IBAction func bm(sender: AnyObject) {
-        let canvasView = self.view as CanvasView
+    @IBAction func bm(_ sender: AnyObject) {
+        let canvasView = self.view as! CanvasView
         
         canvasView.corner = Layer.Corner.BottomMiddle
     }
     
-    @IBAction func br(sender: AnyObject) {
-        let canvasView = self.view as CanvasView
+    @IBAction func br(_ sender: AnyObject) {
+        let canvasView = self.view as! CanvasView
         
         canvasView.corner = Layer.Corner.BottomRight
     }
     
-    @IBAction func m(sender: AnyObject) {
-        let canvasView = self.view as CanvasView
+    @IBAction func m(_ sender: AnyObject) {
+        let canvasView = self.view as! CanvasView
         
         canvasView.corner = Layer.Corner.Middle
     }
     
-    @IBAction func rotate(sender: AnyObject) {
-        let canvasView = self.view as CanvasView
+    @IBAction func rotate(_ sender: AnyObject) {
+        let canvasView = self.view as! CanvasView
         
         for layer in canvasView.layers {
             layer.rotation -= 10.0 * multiplier
         }
     }
     
-    @IBAction func multiplier(sender: AnyObject) {
-        let _switch = sender as UISwitch
+    @IBAction func multiplier(_ sender: AnyObject) {
+        let _switch = sender as! UISwitch
         
-        if _switch.on {
+        if _switch.isOn {
             self.multiplier = 1.0
         } else {
             self.multiplier = -1.0

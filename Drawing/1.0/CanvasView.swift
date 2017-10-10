@@ -25,7 +25,7 @@ class CanvasView: UIView, LayerDelegate {
         self.setup()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         self.setup()
@@ -33,7 +33,7 @@ class CanvasView: UIView, LayerDelegate {
     
     func setup() {
         
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
     }
     
     func addLayer(layer: Layer) {
@@ -43,37 +43,37 @@ class CanvasView: UIView, LayerDelegate {
     }
     
     func boundingRectForLayer(layer: Layer) -> CGRect {
-        var translate = CGAffineTransformMakeTranslation(layer.x, layer.y)
-        translate = CGAffineTransformConcat(CGAffineTransformMakeRotation(layer.rotation * CGFloat(M_PI) / 180.0), translate) // New transform must come first!
-        translate = CGAffineTransformConcat(CGAffineTransformMakeScale(layer.scaleX, layer.scaleY), translate) // New transform must come first!
+        var translate = CGAffineTransform(translationX: layer.x, y: layer.y)
+        translate = CGAffineTransform(rotationAngle: layer.rotation * CGFloat.pi / 180.0).concatenating(translate) // New transform must come first!
+        translate = CGAffineTransform(scaleX: layer.scaleX, y: layer.scaleY).concatenating(translate) // New transform must come first!
         
-        return CGRectApplyAffineTransform(CGRectMake(layer.offsetX, layer.offsetY, layer.width, layer.height), translate)
+        return CGRect(x: layer.offsetX, y: layer.offsetY, width: layer.width, height: layer.height).applying(translate)
     }
     
-    func drawLayerDebugInContext(layer: Layer, context: CGContextRef) {
-        CGContextSaveGState(context)
+    func drawLayerDebugInContext(layer: Layer, context: CGContext) {
+        context.saveGState()
         
-        let boundingPath = UIBezierPath(rect: self.boundingRectForLayer(layer))
+        let boundingPath = UIBezierPath(rect: self.boundingRectForLayer(layer: layer))
         
-        UIColor.redColor().setStroke()
+        UIColor.red.setStroke()
         boundingPath.stroke()
         
-        var originPath = UIBezierPath(ovalInRect: CGRectMake(layer.x - 5.0, layer.y - 5.0, 10.0, 10.0))
+        let originPath = UIBezierPath(ovalIn: CGRect(x: layer.x - 5.0, y: layer.y - 5.0, width: 10.0, height: 10.0))
         
-        UIColor.blueColor().setFill()
+        UIColor.blue.setFill()
         originPath.fill()
         
-        CGContextRestoreGState(context)
+        context.restoreGState()
     }
     
-    override func drawRect(rect: CGRect) {
-        let context = UIGraphicsGetCurrentContext()
+    override func draw(_ rect: CGRect) {
+        let context = UIGraphicsGetCurrentContext()!
         
         for layer in layers {
-            layer.drawInContext(context)
+            layer.drawInContext(context: context)
             
             if self.debug {
-                self.drawLayerDebugInContext(layer, context: context)
+                self.drawLayerDebugInContext(layer: layer, context: context)
             }
         }
     }
@@ -84,16 +84,16 @@ class CanvasView: UIView, LayerDelegate {
         self.setNeedsDisplay()
     }
 
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        let touch = touches.anyObject() as UITouch
-        let location = touch.locationInView(self)
-        let previousLocation = touch.previousLocationInView(self)
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first!
+        let location = touch.location(in: self)
+        let previousLocation = touch.previousLocation(in: self)
         
         let deltaX = previousLocation.x - location.x
         let deltaY = previousLocation.y - location.y
         
         for layer in self.layers {
-            layer.drag(self.corner, deltaX: deltaX, deltaY: deltaY)
+            layer.drag(corner: self.corner, deltaX: deltaX, deltaY: deltaY)
         }
     }
 

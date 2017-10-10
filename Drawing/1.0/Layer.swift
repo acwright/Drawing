@@ -29,53 +29,53 @@ class Layer: NSObject {
    
     var x: CGFloat = 0.0 {
         didSet {
-            self.delegate?.layerDidUpdate(self)
+            self.delegate?.layerDidUpdate(layer: self)
         }
     }
     var y: CGFloat = 0.0 {
         didSet {
-            self.delegate?.layerDidUpdate(self)
+            self.delegate?.layerDidUpdate(layer: self)
         }
     }
     var width: CGFloat = 0.0 {
         didSet {
-            self.delegate?.layerDidUpdate(self)
+            self.delegate?.layerDidUpdate(layer: self)
         }
     }
     var height: CGFloat = 0.0 {
         didSet {
-            self.delegate?.layerDidUpdate(self)
+            self.delegate?.layerDidUpdate(layer: self)
         }
     }
     var rotation: CGFloat = 0.0 {
         didSet {
-            self.delegate?.layerDidUpdate(self)
+            self.delegate?.layerDidUpdate(layer: self)
         }
     }
     var offsetX: CGFloat = 0.0 {
         didSet {
-            self.delegate?.layerDidUpdate(self)
+            self.delegate?.layerDidUpdate(layer: self)
         }
     }
     var offsetY: CGFloat = 0.0 {
         didSet {
-            self.delegate?.layerDidUpdate(self)
+            self.delegate?.layerDidUpdate(layer: self)
         }
     }
     var scaleX: CGFloat = 1.0 {
         didSet {
-            self.delegate?.layerDidUpdate(self)
+            self.delegate?.layerDidUpdate(layer: self)
         }
     }
     var scaleY: CGFloat = 1.0 {
         didSet {
-            self.delegate?.layerDidUpdate(self)
+            self.delegate?.layerDidUpdate(layer: self)
         }
     }
     
     var delegate: LayerDelegate?
     
-    func drawInContext(context: CGContextRef) {
+    func drawInContext(context: CGContext) {
         // Do nothing
     }
     
@@ -83,24 +83,24 @@ class Layer: NSObject {
         switch corner {
         case .TopLeft:
             self.x -= deltaX // Fix
-            self.y -= cos(abs(self.rotation * CGFloat(M_PI) / 180.0)) * deltaY
+            self.y -= cos(abs(self.rotation * CGFloat.pi / 180.0)) * deltaY
             self.width += deltaX
             self.height += deltaY
             break
         case .TopMiddle:
-            self.x -= sin(abs(self.rotation * CGFloat(M_PI) / 180.0)) * deltaY
-            self.y -= cos(abs(self.rotation * CGFloat(M_PI) / 180.0)) * deltaY
+            self.x -= sin(abs(self.rotation * CGFloat.pi / 180.0)) * deltaY
+            self.y -= cos(abs(self.rotation * CGFloat.pi / 180.0)) * deltaY
             self.height += deltaY
             break
         case .TopRight:
-            self.x -= sin(abs(self.rotation * CGFloat(M_PI) / 180.0)) * deltaY
-            self.y -= cos(abs(self.rotation * CGFloat(M_PI) / 180.0)) * deltaY
+            self.x -= sin(abs(self.rotation * CGFloat.pi / 180.0)) * deltaY
+            self.y -= cos(abs(self.rotation * CGFloat.pi / 180.0)) * deltaY
             self.height += deltaY
             self.width -= deltaX
             break
         case .MiddleLeft:
-            self.y += sin(abs(self.rotation * CGFloat(M_PI) / 180.0)) * deltaX
-            self.x -= cos(abs(self.rotation * CGFloat(M_PI) / 180.0)) * deltaX
+            self.y += sin(abs(self.rotation * CGFloat.pi / 180.0)) * deltaX
+            self.x -= cos(abs(self.rotation * CGFloat.pi / 180.0)) * deltaX
             self.width += deltaX
             break
         case .MiddleRight:

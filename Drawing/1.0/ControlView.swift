@@ -44,19 +44,19 @@ class ControlView: UIView {
         self.setup()
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         self.setup()
     }
     
     func setup() {
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
     }
     
     func rotate(degrees: Double) {
         if let controlledView = self.controlledView {
-            controlledView.transform = CGAffineTransformRotate(controlledView.transform, CGFloat(degrees / 180.0 * M_PI))
+            controlledView.transform = controlledView.transform.rotated(by: CGFloat(CGFloat(degrees) / 180.0 * CGFloat.pi))
             self.frame = controlledView.frame
             self.setNeedsDisplay()
         }
@@ -70,39 +70,39 @@ class ControlView: UIView {
     }
 
     func continueResize(location: CGPoint, previousLocation: CGPoint) {
-        let translation = CGPointMake(location.x - previousLocation.x, location.y - previousLocation.y)
-        var newFrame = CGRectZero
-        var newBounds = CGRectZero
+        let translation = CGPoint(x: location.x - previousLocation.x, y: location.y - previousLocation.y)
+        var newFrame = CGRect.zero
+        var newBounds = CGRect.zero
         
-        if let controlledView = self.controlledView {
+        if self.controlledView != nil {
             newBounds = self.controlledView!.bounds
         }
         
         switch self.handle {
         case Handle.TopLeft:
-            newFrame = CGRectMake(self.frame.origin.x + translation.x, self.frame.origin.y + translation.y, self.frame.size.width - translation.x, self.frame.size.height - translation.y)
-            newBounds = CGRectMake(newBounds.origin.x, newBounds.origin.y, newBounds.size.width - translation.x, newBounds.size.height - translation.y)
+            newFrame = CGRect(x: self.frame.origin.x + translation.x, y: self.frame.origin.y + translation.y, width: self.frame.size.width - translation.x, height: self.frame.size.height - translation.y)
+            newBounds = CGRect(x: newBounds.origin.x, y: newBounds.origin.y, width: newBounds.size.width - translation.x, height: newBounds.size.height - translation.y)
         case Handle.TopMiddle:
-            newFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y + translation.y, self.frame.size.width, self.frame.size.height - translation.y)
-            newBounds = CGRectMake(newBounds.origin.x, newBounds.origin.y, newBounds.size.width, newBounds.size.height - translation.y)
+            newFrame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y + translation.y, width: self.frame.size.width, height: self.frame.size.height - translation.y)
+            newBounds = CGRect(x: newBounds.origin.x, y: newBounds.origin.y, width: newBounds.size.width, height: newBounds.size.height - translation.y)
         case Handle.TopRight:
-            newFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y + translation.y, self.frame.size.width + translation.x, self.frame.size.height - translation.y)
-            newBounds = CGRectMake(newBounds.origin.x, newBounds.origin.y, newBounds.size.width + translation.x, newBounds.size.height - translation.y)
+            newFrame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y + translation.y, width: self.frame.size.width + translation.x, height: self.frame.size.height - translation.y)
+            newBounds = CGRect(x: newBounds.origin.x, y: newBounds.origin.y, width: newBounds.size.width + translation.x, height: newBounds.size.height - translation.y)
         case Handle.MiddleLeft:
-            newFrame = CGRectMake(self.frame.origin.x + translation.x, self.frame.origin.y, self.frame.size.width - translation.x, self.frame.size.height)
-            newBounds = CGRectMake(newBounds.origin.x, newBounds.origin.y, newBounds.size.width - translation.x, newBounds.size.height)
+            newFrame = CGRect(x: self.frame.origin.x + translation.x, y: self.frame.origin.y, width: self.frame.size.width - translation.x, height: self.frame.size.height)
+            newBounds = CGRect(x: newBounds.origin.x, y: newBounds.origin.y, width: newBounds.size.width - translation.x, height: newBounds.size.height)
         case Handle.MiddleRight:
-            newFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width + translation.x, self.frame.size.height)
-            newBounds = CGRectMake(newBounds.origin.x, newBounds.origin.y, newBounds.size.width + translation.x, newBounds.size.height)
+            newFrame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.size.width + translation.x, height: self.frame.size.height)
+            newBounds = CGRect(x: newBounds.origin.x, y: newBounds.origin.y, width: newBounds.size.width + translation.x, height: newBounds.size.height)
         case Handle.BottomLeft:
-            newFrame = CGRectMake(self.frame.origin.x + translation.x, self.frame.origin.y, self.frame.size.width - translation.x, self.frame.size.height + translation.y)
-            newBounds = CGRectMake(newBounds.origin.x, newBounds.origin.y, newBounds.size.width - translation.x, newBounds.size.height + translation.y)
+            newFrame = CGRect(x: self.frame.origin.x + translation.x, y: self.frame.origin.y, width: self.frame.size.width - translation.x, height: self.frame.size.height + translation.y)
+            newBounds = CGRect(x: newBounds.origin.x, y: newBounds.origin.y, width: newBounds.size.width - translation.x, height: newBounds.size.height + translation.y)
         case Handle.BottomMiddle:
-            newFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height + translation.y)
-            newBounds = CGRectMake(newBounds.origin.x, newBounds.origin.y, newBounds.size.width, newBounds.size.height + translation.y)
+            newFrame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.size.width, height: self.frame.size.height + translation.y)
+            newBounds = CGRect(x: newBounds.origin.x, y: newBounds.origin.y, width: newBounds.size.width, height: newBounds.size.height + translation.y)
         case Handle.BottomRight:
-            newFrame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width + translation.x, self.frame.size.height + translation.y)
-            newBounds = CGRectMake(newBounds.origin.x, newBounds.origin.y, newBounds.size.width + translation.x, newBounds.size.height + translation.y)
+            newFrame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.size.width + translation.x, height: self.frame.size.height + translation.y)
+            newBounds = CGRect(x: newBounds.origin.x, y: newBounds.origin.y, width: newBounds.size.width + translation.x, height: newBounds.size.height + translation.y)
         case Handle.None:
             fallthrough
         default:
@@ -133,8 +133,8 @@ class ControlView: UIView {
     }
     
     func continueMove(location: CGPoint, previousLocation: CGPoint) {
-        let translation = CGPointMake(location.x - previousLocation.x, location.y - previousLocation.y)
-        let newCenter = CGPointMake(self.center.x + translation.x, self.center.y + translation.y)
+        let translation = CGPoint(x: location.x - previousLocation.x, y: location.y - previousLocation.y)
+        let newCenter = CGPoint(x: self.center.x + translation.x, y: self.center.y + translation.y)
         self.center = newCenter
         self.controlledView?.center = newCenter
         
@@ -148,28 +148,28 @@ class ControlView: UIView {
     }
     
     func handleForLocation(location: CGPoint) -> Handle {
-        if self.rectForHandle(Handle.TopLeft).contains(location) {
+        if self.rectForHandle(handle: Handle.TopLeft).contains(location) {
             return Handle.TopLeft
         }
-        if self.rectForHandle(Handle.TopMiddle).contains(location) {
+        if self.rectForHandle(handle: Handle.TopMiddle).contains(location) {
             return Handle.TopMiddle
         }
-        if self.rectForHandle(Handle.TopRight).contains(location) {
+        if self.rectForHandle(handle: Handle.TopRight).contains(location) {
             return Handle.TopRight
         }
-        if self.rectForHandle(Handle.MiddleLeft).contains(location) {
+        if self.rectForHandle(handle: Handle.MiddleLeft).contains(location) {
             return Handle.MiddleLeft
         }
-        if self.rectForHandle(Handle.MiddleRight).contains(location) {
+        if self.rectForHandle(handle: Handle.MiddleRight).contains(location) {
             return Handle.MiddleRight
         }
-        if self.rectForHandle(Handle.BottomLeft).contains(location) {
+        if self.rectForHandle(handle: Handle.BottomLeft).contains(location) {
             return Handle.BottomLeft
         }
-        if self.rectForHandle(Handle.BottomMiddle).contains(location) {
+        if self.rectForHandle(handle: Handle.BottomMiddle).contains(location) {
             return Handle.BottomMiddle
         }
-        if self.rectForHandle(Handle.BottomRight).contains(location) {
+        if self.rectForHandle(handle: Handle.BottomRight).contains(location) {
             return Handle.BottomRight
         }
         return Handle.None
@@ -188,123 +188,126 @@ class ControlView: UIView {
         
         switch handle {
         case Handle.TopLeft:
-            return CGRectMake(leftX, topY, padding, padding)
+            return CGRect(x: leftX, y: topY, width: padding, height: padding)
         case Handle.TopMiddle:
-            return CGRectMake(midX, topY, padding, padding)
+            return CGRect(x: midX, y: topY, width: padding, height: padding)
         case Handle.TopRight:
-            return CGRectMake(rightX, topY, padding, padding)
+            return CGRect(x: rightX, y: topY, width: padding, height: padding)
         case Handle.MiddleLeft:
-            return CGRectMake(leftX, midY, padding, padding)
+            return CGRect(x: leftX, y: midY, width: padding, height: padding)
         case Handle.MiddleRight:
-            return CGRectMake(rightX, midY, padding, padding)
+            return CGRect(x: rightX, y: midY, width: padding, height: padding)
         case Handle.BottomLeft:
-            return CGRectMake(leftX, bottomY, padding, padding)
+            return CGRect(x: leftX, y: bottomY, width: padding, height: padding)
         case Handle.BottomMiddle:
-            return CGRectMake(midX, bottomY, padding, padding)
+            return CGRect(x: midX, y: bottomY, width: padding, height: padding)
         case Handle.BottomRight:
-            return CGRectMake(rightX, bottomY, padding, padding)
+            return CGRect(x: rightX, y: bottomY, width: padding, height: padding)
         case Handle.None:
             fallthrough
         default:
-            return CGRectZero
+            return CGRect.zero
         }
     }
     
     func drawHandles() {
-        let context = UIGraphicsGetCurrentContext()
+        let context = UIGraphicsGetCurrentContext()!
         
-        CGContextSetRGBFillColor(context, 1.0, 1.0, 1.0, 0.7)
+        context.setFillColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.7)
         
-        let topLeft = rectForHandle(Handle.TopLeft)
-        let topMiddle = rectForHandle(Handle.TopMiddle)
-        let topRight = rectForHandle(Handle.TopRight)
-        let middleLeft = rectForHandle(Handle.MiddleLeft)
-        let middleRight = rectForHandle(Handle.MiddleRight)
-        let bottomLeft = rectForHandle(Handle.BottomLeft)
-        let bottomMiddle = rectForHandle(Handle.BottomMiddle)
-        let bottomRight = rectForHandle(Handle.BottomRight)
+        let topLeft = rectForHandle(handle: Handle.TopLeft)
+        let topMiddle = rectForHandle(handle: Handle.TopMiddle)
+        let topRight = rectForHandle(handle: Handle.TopRight)
+        let middleLeft = rectForHandle(handle: Handle.MiddleLeft)
+        let middleRight = rectForHandle(handle: Handle.MiddleRight)
+        let bottomLeft = rectForHandle(handle: Handle.BottomLeft)
+        let bottomMiddle = rectForHandle(handle: Handle.BottomMiddle)
+        let bottomRight = rectForHandle(handle: Handle.BottomRight)
         
-        CGContextFillRect(context, topLeft)
-        CGContextFillRect(context, topMiddle)
-        CGContextFillRect(context, topRight)
-        CGContextFillRect(context, middleLeft)
-        CGContextFillRect(context, middleRight)
-        CGContextFillRect(context, bottomLeft)
-        CGContextFillRect(context, bottomMiddle)
-        CGContextFillRect(context, bottomRight)
+        context.fill(topLeft)
+        context.fill(topMiddle)
+        context.fill(topRight)
+        context.fill(middleLeft)
+        context.fill(middleRight)
+        context.fill(bottomLeft)
+        context.fill(bottomMiddle)
+        context.fill(bottomRight)
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        super.touchesBegan(touches, withEvent: event)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
         
         if self.selected {
-            let touch = touches.anyObject() as UITouch
-            let location = touch.locationInView(self)
+            let touch = touches.first!
+            let location = touch.location(in: self)
             
-            switch self.handleForLocation(location) {
+            switch self.handleForLocation(location: location) {
             case Handle.TopLeft:
-                self.beginResize(Handle.TopLeft, location: location)
+                self.beginResize(handle: Handle.TopLeft, location: location)
             case Handle.TopMiddle:
-                self.beginResize(Handle.TopMiddle, location: location)
+                self.beginResize(handle: Handle.TopMiddle, location: location)
             case Handle.TopRight:
-                self.beginResize(Handle.TopRight, location: location)
+                self.beginResize(handle: Handle.TopRight, location: location)
             case Handle.MiddleLeft:
-                self.beginResize(Handle.MiddleLeft, location: location)
+                self.beginResize(handle: Handle.MiddleLeft, location: location)
             case Handle.MiddleRight:
-                self.beginResize(Handle.MiddleRight, location: location)
+                self.beginResize(handle: Handle.MiddleRight, location: location)
             case Handle.BottomLeft:
-                self.beginResize(Handle.BottomLeft, location: location)
+                self.beginResize(handle: Handle.BottomLeft, location: location)
             case Handle.BottomMiddle:
-                self.beginResize(Handle.BottomMiddle, location: location)
+                self.beginResize(handle: Handle.BottomMiddle, location: location)
             case Handle.BottomRight:
-                self.beginResize(Handle.BottomRight, location: location)
+                self.beginResize(handle: Handle.BottomRight, location: location)
             case Handle.None:
                 fallthrough
             default:
-                self.beginMove(location)
+                self.beginMove(location: location)
             }
         }
     }
     
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        super.touchesMoved(touches, withEvent: event)
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
         
         if self.selected {
-            let touch = touches.anyObject() as UITouch
-            let location = touch.locationInView(self)
-            let previousLocation = touch.previousLocationInView(self)
+            let touch = touches.first!
+            let location = touch.location(in: self)
+            let previousLocation = touch.previousLocation(in: self)
             
             if self.resizing {
-                self.continueResize(location, previousLocation: previousLocation)
+                self.continueResize(location: location, previousLocation: previousLocation)
             }
             if self.moving {
-                self.continueMove(location, previousLocation: previousLocation)
+                self.continueMove(location: location, previousLocation: previousLocation)
             }
         }
     }
     
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        super.touchesEnded(touches, withEvent: event)
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
         
         if self.selected {
-            let touch = touches.anyObject() as UITouch
-            let location = touch.locationInView(self)
+            let touch = touches.first!
+            let location = touch.location(in: self)
             
             if self.resizing {
-                self.endResize(location)
+                self.endResize(location: location)
             }
             if self.moving {
-                self.endMove(location)
+                self.endMove(location: location)
             }
         }
     }
     
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
         if let backgroundColor = self.backgroundColor {
+            let context = UIGraphicsGetCurrentContext()!
+            
             backgroundColor.setFill()
-            CGContextFillRect(UIGraphicsGetCurrentContext(), self.bounds)
+            
+            context.fill(self.bounds)
         }
         
         if self.selected && !self.moving {
