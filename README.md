@@ -1,4 +1,4 @@
 Drawing
 =======
 
-An experiment in iOS drawing application code
+An experiment in pixel drawing code
