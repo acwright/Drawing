@@ -37,6 +37,7 @@
 		4519593724C7F5AA002F79B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4519593824C7F5AA002F79B0 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		4519594724C7F787002F79B0 /* LayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerView.swift; sourceTree = "<group>"; };
+		452690B124C9F3BA00729420 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		453DB4A624C8D60800620494 /* PixelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelView.swift; sourceTree = "<group>"; };
 		453DB4A924C8DC7B00620494 /* Array+Chunk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Chunk.swift"; sourceTree = "<group>"; };
 		4596688924C9523A008C4D0F /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
@@ -112,6 +113,7 @@
 		4519594A24C7F792002F79B0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				452690B124C9F3BA00729420 /* README.md */,
 				4519592824C7F5AA002F79B0 /* Assets.xcassets */,
 			);
 			name = "Supporting Files";
