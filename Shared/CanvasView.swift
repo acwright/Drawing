@@ -37,6 +37,15 @@ struct CanvasView: View {
                     .gesture(
                         gesture(geometry: geometry)
                     )
+                    .onHover { inside in
+                        #if os(macOS)
+                        if inside {
+                            NSCursor.crosshair.push()
+                        } else {
+                            NSCursor.pop()
+                        }
+                        #endif
+                    }
                 }
             }
             .frame(width: self.width() * 2, height: self.height() * 2)
