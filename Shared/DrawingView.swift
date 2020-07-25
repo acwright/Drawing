@@ -15,7 +15,7 @@ struct DrawingView: View {
     @State private var primaryColor: Color = .white
     @State private var secondaryColor: Color = .clear
     @State private var scale: CGFloat = 8
-    @State private var objects: Bool = true
+    @State private var useObjects: Bool = true
     
     var body: some View {
         VStack(spacing: 20) {
@@ -26,9 +26,9 @@ struct DrawingView: View {
                 Spacer()
                 
                 Button {
-                    objects.toggle()
+                    useObjects.toggle()
                 } label: {
-                    Text(objects ? "Use Structs" : "Use Objects")
+                    Text(useObjects ? "Use Structs" : "Use Objects")
                 }
                 
                 HStack {
@@ -88,7 +88,7 @@ struct DrawingView: View {
             .background(Color.black.opacity(0.6))
             .cornerRadius(8)
             
-            if objects {
+            if useObjects {
                 CanvasObjectView(pixels: pixelObjects, scale: $scale, primaryColor: $primaryColor, secondaryColor: $secondaryColor)
             } else {
                 CanvasView(pixels: $pixels, scale: $scale, primaryColor: $primaryColor, secondaryColor: $secondaryColor)

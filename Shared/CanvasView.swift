@@ -19,7 +19,8 @@ struct CanvasView: View {
         ScrollView([.horizontal, .vertical], showsIndicators: false) {
             VStack(spacing: 0) {
                 GeometryReader { geometry in
-                    LayerView(size: $pixels.size, pixels: $pixels.pixels)
+                    LayerView(size: $pixels.size, pixels: $pixels)
+                    .drawingGroup()
                     .frame(width: self.width(), height: self.height())
                     .contentShape(Rectangle())
                     .gesture(

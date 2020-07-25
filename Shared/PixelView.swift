@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PixelView: View {
     
-    @State var pixel: Pixel
+    var pixel: Pixel
     
     var body: some View {
         Rectangle()

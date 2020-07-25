@@ -12,7 +12,7 @@ class PixelsObject: ObservableObject {
     @Published var size: Int
     @Published var pixels: [PixelObject]
  
-    init(size: Int = 16) {
+    init(size: Int = 32) {
         self.size = size
         self.pixels = PixelObject.empty(size: size)
     }

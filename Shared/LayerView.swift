@@ -10,12 +10,12 @@ import SwiftUI
 struct LayerView: View {
     
     @Binding var size: Int
-    @Binding var pixels: [Pixel]
+    @Binding var pixels: Pixels
     
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: geometry.size.width > CGFloat(size * 3) ? 1 : 0) {
-                ForEach(self.pixels.chunk(size: self.size), id: \.self) { row in
+                ForEach(self.pixels.pixels.chunk(size: self.size), id: \.self) { row in
                     HStack(spacing: geometry.size.height > CGFloat(size * 3) ? 1 : 0) {
                         ForEach(row) { pixel in
                             PixelView(pixel: pixel)
@@ -31,7 +31,7 @@ struct LayerView: View {
 struct LayerView_Previews: PreviewProvider {
     
     static var previews: some View {
-        LayerView(size: .constant(16), pixels: .constant(Pixel.empty(size: 16)))
+        LayerView(size: .constant(16), pixels: .constant(Pixels(size: 16)))
             .previewLayout(.sizeThatFits)
             .frame(width: 512, height: 512)
             .aspectRatio(CGSize(width: 1, height: 1), contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)

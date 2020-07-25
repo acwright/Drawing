@@ -12,7 +12,7 @@ struct Pixels {
     var size: Int
     var pixels: [Pixel]
  
-    init(size: Int = 16) {
+    init(size: Int = 32) {
         self.size = size
         self.pixels = Pixel.empty(size: size)
     }
