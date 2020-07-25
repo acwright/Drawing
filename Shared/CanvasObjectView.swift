@@ -1,15 +1,15 @@
 //
-//  CanvasView.swift
+//  CanvasObjectView.swift
 //  Drawing
 //
-//  Created by Aaron Wright on 7/25/20.
+//  Created by Aaron Wright on 7/23/20.
 //
 
 import SwiftUI
 
-struct CanvasView: View {
+struct CanvasObjectView: View {
     
-    @Binding var pixels: Pixels
+    @ObservedObject var pixels: PixelsObject
     
     @Binding var scale: CGFloat
     @Binding var primaryColor: Color
@@ -19,7 +19,7 @@ struct CanvasView: View {
         ScrollView([.horizontal, .vertical], showsIndicators: false) {
             VStack(spacing: 0) {
                 GeometryReader { geometry in
-                    LayerView(size: $pixels.size, pixels: $pixels.pixels)
+                    LayerObjectView(size: $pixels.size, pixels: $pixels.pixels)
                     .frame(width: self.width(), height: self.height())
                     .contentShape(Rectangle())
                     .gesture(
@@ -47,7 +47,7 @@ struct CanvasView: View {
     func height() -> CGFloat {
         $scale.wrappedValue * CGFloat(pixels.size)
     }
-
+    
     func gesture(geometry: GeometryProxy) -> some Gesture {
         #if os(iOS)
         return primaryGesture(geometry: geometry)
@@ -55,14 +55,14 @@ struct CanvasView: View {
         return ExclusiveGesture(secondaryGesture(geometry: geometry), primaryGesture(geometry: geometry))
         #endif
     }
-
+    
     func primaryGesture(geometry: GeometryProxy) -> some Gesture {
         DragGesture(minimumDistance: 0.1)
             .onChanged({ (value) in
                 self.draw(at: value.location, color: self.primaryColor, geometry: geometry)
             })
     }
-
+    
     #if os(macOS)
     func secondaryGesture(geometry: GeometryProxy) -> some Gesture {
         return DragGesture(minimumDistance: 0.1)
@@ -72,30 +72,30 @@ struct CanvasView: View {
             })
     }
     #endif
-
+    
     func draw(at point: CGPoint, color: Color, geometry: GeometryProxy) {
         if point.x >= 0 && point.x < geometry.size.width && point.y >= 0 && point.y < geometry.size.height {
             let x = Int(point.x / (geometry.size.width / CGFloat(pixels.size)))
             let y = Int(point.y / (geometry.size.height / CGFloat(pixels.size)))
-
+            
             let pixel = self.pixel(for: CGPoint(x: x, y: y))
 
             if pixel.color != color {
-                pixels.pixels[y * pixels.size + x] = Pixel(color: color)
+                pixel.color = color
             }
         }
     }
-
-    func pixel(for point: CGPoint) -> Pixel {
-        return pixels.pixels[(Int(point.y) * pixels.size) + Int(point.x)]
+    
+    func pixel(for point: CGPoint) -> PixelObject {
+        pixels.pixels[(Int(point.y) * pixels.size) + Int(point.x)]
     }
     
 }
 
-struct CanvasView_Previews: PreviewProvider {
+struct CanvasObjectView_Previews: PreviewProvider {
     
     static var previews: some View {
-        CanvasView(pixels: .constant(Pixels(size: 16)), scale: .constant(8), primaryColor: .constant(Color.black), secondaryColor: .constant(Color.white))
+        CanvasObjectView(pixels: PixelsObject(), scale: .constant(8), primaryColor: .constant(Color.black), secondaryColor: .constant(Color.white))
     }
     
 }

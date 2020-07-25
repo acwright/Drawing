@@ -1,17 +1,17 @@
 //
 //  Pixel.swift
-//  Drawing
+//  Drawing (iOS)
 //
-//  Created by Aaron Wright on 7/22/20.
+//  Created by Aaron Wright on 7/25/20.
 //
 
 import SwiftUI
 
-class Pixel: ObservableObject, Identifiable {
+struct Pixel: Identifiable {
     
-    var id: UUID = UUID()
+    let id: UUID = UUID()
     
-    @Published var color: Color = Color.clear
+    var color: Color = Color.black
     
 }
 
@@ -36,7 +36,7 @@ extension Pixel {
 extension Pixel: Hashable {
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(ObjectIdentifier(self))
+        hasher.combine(id)
     }
     
 }

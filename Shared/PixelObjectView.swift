@@ -1,5 +1,5 @@
 //
-//  PixelView.swift
+//  PixelObjectView.swift
 //  Drawing
 //
 //  Created by Aaron Wright on 7/22/20.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct PixelView: View {
+struct PixelObjectView: View {
     
-    @State var pixel: Pixel
+    @ObservedObject var pixel: PixelObject
     
     var body: some View {
         Rectangle()
@@ -18,10 +18,10 @@ struct PixelView: View {
     
 }
 
-struct PixelView_Previews: PreviewProvider {
+struct PixelObjectView_Previews: PreviewProvider {
     
     static var previews: some View {
-        PixelView(pixel: Pixel())
+        PixelObjectView(pixel: PixelObject())
     }
     
 }

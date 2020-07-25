@@ -2,53 +2,37 @@
 //  Pixels.swift
 //  Drawing
 //
-//  Created by Aaron Wright on 7/23/20.
+//  Created by Aaron Wright on 7/25/20.
 //
 
 import SwiftUI
 
-class Pixels: ObservableObject {
+struct Pixels {
     
-    @Published var size: Int
-    @Published var pixels: [[Pixel]]
+    var size: Int
+    var pixels: [Pixel]
  
     init(size: Int = 16) {
-        var pixels: [[Pixel]] = []
-        pixels.append(Pixel.empty(size: size))
-        pixels.append(Pixel.empty(size: size))
-        pixels.append(Pixel.empty(size: size))
-        pixels.append(Pixel.empty(size: size))
-        
         self.size = size
-        self.pixels = pixels
+        self.pixels = Pixel.empty(size: size)
     }
     
-    func resize(to size: Int) {
-        var pixels: [[Pixel]] = []
-        pixels.append(Pixel.empty(size: size))
-        pixels.append(Pixel.empty(size: size))
-        pixels.append(Pixel.empty(size: size))
-        pixels.append(Pixel.empty(size: size))
-        
+    mutating func resize(to size: Int) {
         self.size = size
-        self.pixels = pixels
+        self.pixels = Pixel.empty(size: size)
     }
     
-    func clear() {
-        for pixelSet in pixels {
-            for pixel in pixelSet {
-                pixel.color = Color.black
-            }
-        }
+    mutating func clear() {
+        pixels = pixels.map({ (pixel) -> Pixel in
+            Pixel(color: .black)
+        })
     }
     
-    func random() {
-        for pixelSet in pixels {
-            for pixel in pixelSet {
-                pixel.color = Color(red: .random(in: 0...1),
-                                    green: .random(in: 0...1),
-                                    blue: .random(in: 0...1))
-            }
+    mutating func random() {
+        pixels = pixels.map { (pixel) -> Pixel in
+            Pixel(color: Color(red: .random(in: 0...1),
+                               green: .random(in: 0...1),
+                               blue: .random(in: 0...1)))
         }
     }
     

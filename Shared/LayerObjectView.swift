@@ -1,16 +1,16 @@
 //
-//  LayerView.swift
+//  LayerObjectView.swift
 //  Drawing
 //
-//  Created by Aaron Wright on 7/25/20.
+//  Created by Aaron Wright on 7/21/20.
 //
 
 import SwiftUI
 
-struct LayerView: View {
+struct LayerObjectView: View {
     
     @Binding var size: Int
-    @Binding var pixels: [Pixel]
+    @Binding var pixels: [PixelObject]
     
     var body: some View {
         GeometryReader { geometry in
@@ -18,7 +18,7 @@ struct LayerView: View {
                 ForEach(self.pixels.chunk(size: self.size), id: \.self) { row in
                     HStack(spacing: geometry.size.height > CGFloat(size * 3) ? 1 : 0) {
                         ForEach(row) { pixel in
-                            PixelView(pixel: pixel)
+                            PixelObjectView(pixel: pixel)
                         }
                     }
                 }
@@ -28,10 +28,10 @@ struct LayerView: View {
     
 }
 
-struct LayerView_Previews: PreviewProvider {
+struct LayerObjectView_Previews: PreviewProvider {
     
     static var previews: some View {
-        LayerView(size: .constant(16), pixels: .constant(Pixel.empty(size: 16)))
+        LayerObjectView(size: .constant(16), pixels: .constant(PixelObject.empty(size: 16)))
             .previewLayout(.sizeThatFits)
             .frame(width: 512, height: 512)
             .aspectRatio(CGSize(width: 1, height: 1), contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)

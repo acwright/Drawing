@@ -9,11 +9,13 @@ import SwiftUI
 
 struct DrawingView: View {
     
-    @StateObject private var pixels: Pixels = Pixels()
+    @StateObject private var pixelObjects: PixelsObject = PixelsObject()
+    @State private var pixels: Pixels = Pixels()
     
     @State private var primaryColor: Color = .white
     @State private var secondaryColor: Color = .clear
     @State private var scale: CGFloat = 8
+    @State private var objects: Bool = true
     
     var body: some View {
         VStack(spacing: 20) {
@@ -24,47 +26,61 @@ struct DrawingView: View {
                 Spacer()
                 
                 Button {
-                    pixels.random()
+                    objects.toggle()
                 } label: {
-                    Text("Randomize")
+                    Text(objects ? "Use Structs" : "Use Objects")
                 }
                 
-                Button {
-                    pixels.clear()
-                } label: {
-                    Text("Clear")
-                }
-                
-                Button {
-                    if pixels.size > 1 {
-                        pixels.resize(to: pixels.size - 1)
+                HStack {
+                    Button {
+                        pixelObjects.random()
+                        pixels.random()
+                    } label: {
+                        Text("Randomize")
                     }
-                } label: {
-                    Image(systemName: "minus")
-                }
-                
-                Text("\(Int(pixels.size)) px")
-                
-                Button {
-                    pixels.resize(to: pixels.size + 1)
-                } label: {
-                    Image(systemName: "plus")
-                }
-                
-                Button {
-                    if self.scale > 1 {
-                        self.scale -= 1
+                    
+                    Button {
+                        pixelObjects.clear()
+                        pixels.clear()
+                    } label: {
+                        Text("Clear")
                     }
-                } label: {
-                    Image(systemName: "minus.magnifyingglass")
-                }
-                
-                Text("\(Int($scale.wrappedValue)) x")
-                
-                Button {
-                    self.scale += 1
-                } label: {
-                    Image(systemName: "plus.magnifyingglass")
+                    
+                    Button {
+                        if pixelObjects.size > 1 {
+                            pixelObjects.resize(to: pixelObjects.size - 1)
+                        }
+                        if pixels.size > 1 {
+                            pixels.resize(to: pixels.size - 1)
+                        }
+                    } label: {
+                        Image(systemName: "minus")
+                    }
+                    
+                    Text("\(Int(pixels.size)) px")
+                    
+                    Button {
+                        pixelObjects.resize(to: pixels.size + 1)
+                        pixels.resize(to: pixels.size + 1)
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                    
+                    Button {
+                        if self.scale > 1 {
+                            self.scale -= 1
+                        }
+                    } label: {
+                        Image(systemName: "minus.magnifyingglass")
+                    }
+                    
+                    Text("\(Int($scale.wrappedValue)) x")
+                    
+                    Button {
+                        self.scale += 1
+                    } label: {
+                        Image(systemName: "plus.magnifyingglass")
+                    }
                 }
             }
             .zIndex(1)
@@ -72,7 +88,11 @@ struct DrawingView: View {
             .background(Color.black.opacity(0.6))
             .cornerRadius(8)
             
-            CanvasView(pixels: pixels, scale: $scale, primaryColor: $primaryColor, secondaryColor: $secondaryColor)
+            if objects {
+                CanvasObjectView(pixels: pixelObjects, scale: $scale, primaryColor: $primaryColor, secondaryColor: $secondaryColor)
+            } else {
+                CanvasView(pixels: $pixels, scale: $scale, primaryColor: $primaryColor, secondaryColor: $secondaryColor)
+            }
         }
         .padding()
         .frame(minWidth: .zero, maxWidth: .infinity, minHeight: .zero, maxHeight: .infinity)

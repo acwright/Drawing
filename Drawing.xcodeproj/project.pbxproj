@@ -13,18 +13,28 @@
 		4519593C24C7F5AA002F79B0 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4519592724C7F5A9002F79B0 /* DrawingView.swift */; };
 		4519593D24C7F5AA002F79B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4519592824C7F5AA002F79B0 /* Assets.xcassets */; };
 		4519593E24C7F5AA002F79B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4519592824C7F5AA002F79B0 /* Assets.xcassets */; };
-		4519594824C7F787002F79B0 /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4519594724C7F787002F79B0 /* LayerView.swift */; };
-		4519594924C7F787002F79B0 /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4519594724C7F787002F79B0 /* LayerView.swift */; };
-		453DB4A724C8D60800620494 /* PixelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453DB4A624C8D60800620494 /* PixelView.swift */; };
-		453DB4A824C8D60800620494 /* PixelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453DB4A624C8D60800620494 /* PixelView.swift */; };
+		4519594824C7F787002F79B0 /* LayerObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4519594724C7F787002F79B0 /* LayerObjectView.swift */; };
+		4519594924C7F787002F79B0 /* LayerObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4519594724C7F787002F79B0 /* LayerObjectView.swift */; };
+		453DB4A724C8D60800620494 /* PixelObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453DB4A624C8D60800620494 /* PixelObjectView.swift */; };
+		453DB4A824C8D60800620494 /* PixelObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453DB4A624C8D60800620494 /* PixelObjectView.swift */; };
 		453DB4AA24C8DC7B00620494 /* Array+Chunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453DB4A924C8DC7B00620494 /* Array+Chunk.swift */; };
 		453DB4AB24C8DC7B00620494 /* Array+Chunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453DB4A924C8DC7B00620494 /* Array+Chunk.swift */; };
-		4596688A24C9523A008C4D0F /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4596688924C9523A008C4D0F /* CanvasView.swift */; };
-		4596688B24C9523A008C4D0F /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4596688924C9523A008C4D0F /* CanvasView.swift */; };
-		4596688D24C95CD1008C4D0F /* Pixels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4596688C24C95CD1008C4D0F /* Pixels.swift */; };
-		4596688E24C95CD1008C4D0F /* Pixels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4596688C24C95CD1008C4D0F /* Pixels.swift */; };
-		45FDE77824C8DF8B002E8F63 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FDE77724C8DF8B002E8F63 /* Pixel.swift */; };
-		45FDE77924C8DF8B002E8F63 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FDE77724C8DF8B002E8F63 /* Pixel.swift */; };
+		4596688A24C9523A008C4D0F /* CanvasObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4596688924C9523A008C4D0F /* CanvasObjectView.swift */; };
+		4596688B24C9523A008C4D0F /* CanvasObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4596688924C9523A008C4D0F /* CanvasObjectView.swift */; };
+		4596688D24C95CD1008C4D0F /* PixelsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4596688C24C95CD1008C4D0F /* PixelsObject.swift */; };
+		4596688E24C95CD1008C4D0F /* PixelsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4596688C24C95CD1008C4D0F /* PixelsObject.swift */; };
+		45BB25BB24CCDD18001239C7 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB25BA24CCDD18001239C7 /* Pixel.swift */; };
+		45BB25BC24CCDD1B001239C7 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB25BA24CCDD18001239C7 /* Pixel.swift */; };
+		45BB25BE24CCDD59001239C7 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB25BD24CCDD59001239C7 /* CanvasView.swift */; };
+		45BB25BF24CCDD59001239C7 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB25BD24CCDD59001239C7 /* CanvasView.swift */; };
+		45BB25C124CCDF87001239C7 /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB25C024CCDF87001239C7 /* LayerView.swift */; };
+		45BB25C224CCDF87001239C7 /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB25C024CCDF87001239C7 /* LayerView.swift */; };
+		45BB25C424CCE0B9001239C7 /* PixelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB25C324CCE0B9001239C7 /* PixelView.swift */; };
+		45BB25C524CCE0B9001239C7 /* PixelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB25C324CCE0B9001239C7 /* PixelView.swift */; };
+		45BB25C724CCE4A3001239C7 /* Pixels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB25C624CCE4A3001239C7 /* Pixels.swift */; };
+		45BB25C824CCE4A3001239C7 /* Pixels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB25C624CCE4A3001239C7 /* Pixels.swift */; };
+		45FDE77824C8DF8B002E8F63 /* PixelObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FDE77724C8DF8B002E8F63 /* PixelObject.swift */; };
+		45FDE77924C8DF8B002E8F63 /* PixelObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FDE77724C8DF8B002E8F63 /* PixelObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,13 +46,18 @@
 		4519593524C7F5AA002F79B0 /* Drawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4519593724C7F5AA002F79B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4519593824C7F5AA002F79B0 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
-		4519594724C7F787002F79B0 /* LayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerView.swift; sourceTree = "<group>"; };
+		4519594724C7F787002F79B0 /* LayerObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerObjectView.swift; sourceTree = "<group>"; };
 		452690B124C9F3BA00729420 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		453DB4A624C8D60800620494 /* PixelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelView.swift; sourceTree = "<group>"; };
+		453DB4A624C8D60800620494 /* PixelObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelObjectView.swift; sourceTree = "<group>"; };
 		453DB4A924C8DC7B00620494 /* Array+Chunk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Chunk.swift"; sourceTree = "<group>"; };
-		4596688924C9523A008C4D0F /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
-		4596688C24C95CD1008C4D0F /* Pixels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pixels.swift; sourceTree = "<group>"; };
-		45FDE77724C8DF8B002E8F63 /* Pixel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pixel.swift; sourceTree = "<group>"; };
+		4596688924C9523A008C4D0F /* CanvasObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasObjectView.swift; sourceTree = "<group>"; };
+		4596688C24C95CD1008C4D0F /* PixelsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelsObject.swift; sourceTree = "<group>"; };
+		45BB25BA24CCDD18001239C7 /* Pixel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pixel.swift; sourceTree = "<group>"; };
+		45BB25BD24CCDD59001239C7 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		45BB25C024CCDF87001239C7 /* LayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerView.swift; sourceTree = "<group>"; };
+		45BB25C324CCE0B9001239C7 /* PixelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelView.swift; sourceTree = "<group>"; };
+		45BB25C624CCE4A3001239C7 /* Pixels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pixels.swift; sourceTree = "<group>"; };
+		45FDE77724C8DF8B002E8F63 /* PixelObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +92,11 @@
 			isa = PBXGroup;
 			children = (
 				4519592624C7F5A9002F79B0 /* DrawingApp.swift */,
-				4519594C24C7FAFA002F79B0 /* Models */,
-				4519594B24C7F7D4002F79B0 /* Views */,
+				45BB25B724CCDCD5001239C7 /* Extensions */,
+				4519594C24C7FAFA002F79B0 /* Objects */,
+				45BB25B824CCDCEF001239C7 /* Structs */,
 				4519594A24C7F792002F79B0 /* Supporting Files */,
+				4519594B24C7F7D4002F79B0 /* Views */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -122,28 +139,55 @@
 		4519594B24C7F7D4002F79B0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4596688824C93330008C4D0F /* CanvasObject */,
+				45BB25B924CCDCFF001239C7 /* Canvas */,
 				4519592724C7F5A9002F79B0 /* DrawingView.swift */,
-				4596688824C93330008C4D0F /* Canvas */,
 			);
 			name = Views;
 			sourceTree = "<group>";
 		};
-		4519594C24C7FAFA002F79B0 /* Models */ = {
+		4519594C24C7FAFA002F79B0 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				45FDE77724C8DF8B002E8F63 /* PixelObject.swift */,
+				4596688C24C95CD1008C4D0F /* PixelsObject.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		4596688824C93330008C4D0F /* CanvasObject */ = {
+			isa = PBXGroup;
+			children = (
+				4596688924C9523A008C4D0F /* CanvasObjectView.swift */,
+				4519594724C7F787002F79B0 /* LayerObjectView.swift */,
+				453DB4A624C8D60800620494 /* PixelObjectView.swift */,
+			);
+			name = CanvasObject;
+			sourceTree = "<group>";
+		};
+		45BB25B724CCDCD5001239C7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				453DB4A924C8DC7B00620494 /* Array+Chunk.swift */,
-				45FDE77724C8DF8B002E8F63 /* Pixel.swift */,
-				4596688C24C95CD1008C4D0F /* Pixels.swift */,
 			);
-			name = Models;
+			name = Extensions;
 			sourceTree = "<group>";
 		};
-		4596688824C93330008C4D0F /* Canvas */ = {
+		45BB25B824CCDCEF001239C7 /* Structs */ = {
 			isa = PBXGroup;
 			children = (
-				4596688924C9523A008C4D0F /* CanvasView.swift */,
-				4519594724C7F787002F79B0 /* LayerView.swift */,
-				453DB4A624C8D60800620494 /* PixelView.swift */,
+				45BB25BA24CCDD18001239C7 /* Pixel.swift */,
+				45BB25C624CCE4A3001239C7 /* Pixels.swift */,
+			);
+			name = Structs;
+			sourceTree = "<group>";
+		};
+		45BB25B924CCDCFF001239C7 /* Canvas */ = {
+			isa = PBXGroup;
+			children = (
+				45BB25BD24CCDD59001239C7 /* CanvasView.swift */,
+				45BB25C024CCDF87001239C7 /* LayerView.swift */,
+				45BB25C324CCE0B9001239C7 /* PixelView.swift */,
 			);
 			name = Canvas;
 			sourceTree = "<group>";
@@ -245,14 +289,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45FDE77824C8DF8B002E8F63 /* Pixel.swift in Sources */,
-				4596688A24C9523A008C4D0F /* CanvasView.swift in Sources */,
+				45FDE77824C8DF8B002E8F63 /* PixelObject.swift in Sources */,
+				4596688A24C9523A008C4D0F /* CanvasObjectView.swift in Sources */,
+				45BB25C724CCE4A3001239C7 /* Pixels.swift in Sources */,
 				4519593B24C7F5AA002F79B0 /* DrawingView.swift in Sources */,
+				45BB25BE24CCDD59001239C7 /* CanvasView.swift in Sources */,
 				453DB4AA24C8DC7B00620494 /* Array+Chunk.swift in Sources */,
-				4596688D24C95CD1008C4D0F /* Pixels.swift in Sources */,
+				45BB25BB24CCDD18001239C7 /* Pixel.swift in Sources */,
+				4596688D24C95CD1008C4D0F /* PixelsObject.swift in Sources */,
+				45BB25C424CCE0B9001239C7 /* PixelView.swift in Sources */,
 				4519593924C7F5AA002F79B0 /* DrawingApp.swift in Sources */,
-				453DB4A724C8D60800620494 /* PixelView.swift in Sources */,
-				4519594824C7F787002F79B0 /* LayerView.swift in Sources */,
+				453DB4A724C8D60800620494 /* PixelObjectView.swift in Sources */,
+				45BB25C124CCDF87001239C7 /* LayerView.swift in Sources */,
+				4519594824C7F787002F79B0 /* LayerObjectView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,14 +309,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45FDE77924C8DF8B002E8F63 /* Pixel.swift in Sources */,
-				4596688B24C9523A008C4D0F /* CanvasView.swift in Sources */,
+				45FDE77924C8DF8B002E8F63 /* PixelObject.swift in Sources */,
+				4596688B24C9523A008C4D0F /* CanvasObjectView.swift in Sources */,
+				45BB25C824CCE4A3001239C7 /* Pixels.swift in Sources */,
 				4519593C24C7F5AA002F79B0 /* DrawingView.swift in Sources */,
+				45BB25BF24CCDD59001239C7 /* CanvasView.swift in Sources */,
 				453DB4AB24C8DC7B00620494 /* Array+Chunk.swift in Sources */,
-				4596688E24C95CD1008C4D0F /* Pixels.swift in Sources */,
+				45BB25BC24CCDD1B001239C7 /* Pixel.swift in Sources */,
+				4596688E24C95CD1008C4D0F /* PixelsObject.swift in Sources */,
+				45BB25C524CCE0B9001239C7 /* PixelView.swift in Sources */,
 				4519593A24C7F5AA002F79B0 /* DrawingApp.swift in Sources */,
-				453DB4A824C8D60800620494 /* PixelView.swift in Sources */,
-				4519594924C7F787002F79B0 /* LayerView.swift in Sources */,
+				453DB4A824C8D60800620494 /* PixelObjectView.swift in Sources */,
+				45BB25C224CCDF87001239C7 /* LayerView.swift in Sources */,
+				4519594924C7F787002F79B0 /* LayerObjectView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
