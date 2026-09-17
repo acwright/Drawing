@@ -2,7 +2,7 @@
 //  PixelsObject.swift
 //  Drawing
 //
-//  Created by Aaron Wright on 7/23/20.
+//  Created by A.C. Wright on 7/23/20.
 //
 
 import SwiftUI

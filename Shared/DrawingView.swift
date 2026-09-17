@@ -2,7 +2,7 @@
 //  DrawingView.swift
 //  Shared
 //
-//  Created by Aaron Wright on 7/21/20.
+//  Created by A.C. Wright on 7/21/20.
 //
 
 import SwiftUI
